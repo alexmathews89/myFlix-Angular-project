@@ -17,6 +17,10 @@ export class ProfilePageComponent {
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((resp: any) => {
       this.userData = resp;
+      localStorage.setItem('user', JSON.stringify(resp));
+      this.user.Username = resp.Username;
+      this.user.Password = resp.Password;
+      this.user.Email = resp.Email;
 
       return this.userData;
     });
