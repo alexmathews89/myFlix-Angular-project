@@ -48,21 +48,23 @@ export class MovieCardComponent {
     });
   }
 
-  openGenreDialog(): void {
-    this.getMovies();
+  openGenreDialog(Name: string, Description: string): void {
+    //this.getMovies();
 
     this.dialog.open(GenreCardComponent, {
+      data: { Name, Description },
       width: '600px',
       height: '200px',
     });
   }
 
-  openDirectorDialog(): void {
-    this.getMovies();
+  openDirectorDialog(Name: string, Birth: string): void {
+    //this.getMovies();
 
     this.dialog.open(DirectorCardComponent, {
+      data: { Name, Birth },
       width: '200px',
-      height: '200px',
+      height: '100px',
     });
   }
 

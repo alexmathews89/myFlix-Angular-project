@@ -14,10 +14,20 @@
         <mat-card-subtitle><img src="{{ movie.Image }}" /> </mat-card-subtitle>
       </mat-dialog-content>
       <mat-card-actions>
-        <button mat-button color="primary" (click)="openGenreDialog()">
+        <button
+          mat-button
+          color="primary"
+          (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
+        >
           Genre
         </button>
-        <button mat-button color="primary" (click)="openDirectorDialog()">
+        <button
+          mat-button
+          color="primary"
+          (click)="
+            openDirectorDialog(movie.Director.Name, movie.Director.Birth)
+          "
+        >
           Director
         </button>
 

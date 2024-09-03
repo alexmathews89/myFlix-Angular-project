@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-director-card',
   templateUrl: './director-card.component.html',
   styleUrl: './director-card.component.scss',
 })
-export class DirectorCardComponent {
-  movies: any[] = [];
+export class DirectorCardComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      Name: string;
+      Birth: string;
+    }
+  ) {}
 
-  constructor(public fetchApiData: FetchApiDataService) {}
-
-  getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(this.movies);
-      return this.movies;
-    });
-  }
+  ngOnInit(): void {}
 }

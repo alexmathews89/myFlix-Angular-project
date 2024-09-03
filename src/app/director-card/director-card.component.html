@@ -1,8 +1,6 @@
-<!-- <p>director-card works!</p> -->
-
-<mat-card *ngFor="let movie of movies; let i = index">
+<mat-card>
   <mat-dialog-content>
-    <mat-card-title>{{ movie.Director.Name }}</mat-card-title>
-    <p>{{ movie.Director.Birth }}</p>
+    <mat-card-title>{{ data.Name }}</mat-card-title>
+    <mat-card-subtitle>Born: {{ data.Birth }}</mat-card-subtitle>
   </mat-dialog-content>
 </mat-card>
