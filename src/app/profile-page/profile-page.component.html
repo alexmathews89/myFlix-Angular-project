@@ -2,11 +2,23 @@
 <h3>{{ user.Email }}</h3>
 <form>
   <mat-form-field>
-    <input matInput type="text" placeholder="Username" name="Username" />
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="userData.Username"
+      placeholder="Username"
+      name="Username"
+    />
   </mat-form-field>
   <br />
   <mat-form-field>
-    <input matInput type="password" placeholder="Password" name="Password" />
+    <input
+      matInput
+      type="password"
+      [(ngModel)]="userData.Password"
+      placeholder="Password"
+      name="Password"
+    />
   </mat-form-field>
   <br />
   <mat-form-field>

@@ -15,6 +15,10 @@ export class ProfilePageComponent {
   constructor(public fetchApiData: FetchApiDataService) {}
 
   updateUser(): void {
-    this.fetchApiData.editUser();
+    this.fetchApiData.editUser(this.userData).subscribe((resp: any) => {
+      this.userData = resp;
+
+      return this.userData;
+    });
   }
 }

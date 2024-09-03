@@ -14,14 +14,29 @@
         <mat-card-subtitle><img src="{{ movie.Image }}" /> </mat-card-subtitle>
       </mat-dialog-content>
       <mat-card-actions>
-        <button mat-button color="primary">Genre</button>
-        <button mat-button color="primary">Director</button>
+        <button mat-button color="primary" (click)="openGenreDialog()">
+          Genre
+        </button>
+        <button mat-button color="primary" (click)="openDirectorDialog()">
+          Director
+        </button>
 
-        <mat-icon style="color: #008000; cursor: pointer"
+        <mat-icon
+          style="color: #008000; cursor: pointer"
+          (click)="addFavorite()"
           >favorite_border</mat-icon
         >
       </mat-card-actions>
     </mat-card>
+  </div>
+
+  <div class="favorite-section">
+    <h1>Farvorite Movies:</h1>
+    <br />
+    <div *ngFor="let movie of movies; let i = index">
+      <p>temporary note: favorite movies go here</p>
+      <div *ngIf="FavoriteMovies.includes(movie._id)"></div>
+    </div>
   </div>
 
   <div class="options">
