@@ -3,6 +3,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { window } from 'rxjs';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
@@ -14,7 +15,7 @@ import { DirectorCardComponent } from '../director-card/director-card.component'
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  FavoriteMovies: any[] = [];
+  FavoriteMoviesIds: any[] = [];
 
   userInfo: any = localStorage.getItem('user');
   user: any = JSON.parse(this.userInfo);
@@ -22,11 +23,13 @@ export class MovieCardComponent {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    public snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavoritesIds();
   }
 
   getMovies(): void {
@@ -37,8 +40,41 @@ export class MovieCardComponent {
     });
   }
 
-  addFavorite(): void {
-    this.fetchApiData.addFavoriteMovie();
+  getFavoritesIds(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.FavoriteMoviesIds = user.FavoriteMovies;
+  }
+
+  getFavoriteMovies(): any[] {
+    return this.movies.filter((movie) =>
+      this.FavoriteMoviesIds.includes(movie._id)
+    );
+  }
+
+  isFavoriteMovie(movieID: string): boolean {
+    return this.FavoriteMoviesIds.includes(movieID);
+  }
+
+  addFavoriteMovie(movieID: string): void {
+    this.fetchApiData.addFavoriteMovie(movieID).subscribe((res: any) => {
+      this.snackbar.open('Added to favorites.', 'OK', {
+        duration: 3000,
+      });
+      localStorage.setItem('user', JSON.stringify(res));
+      this.getFavoritesIds();
+    });
+  }
+
+  removeFavoriteMovie(movieID: string): void {
+    this.fetchApiData
+      .deleteMovieFromFavorites(movieID)
+      .subscribe((res: any) => {
+        this.snackbar.open('Removed from favorites.', 'OK', {
+          duration: 3000,
+        });
+        localStorage.setItem('user', JSON.stringify(res));
+        this.getFavoritesIds();
+      });
   }
 
   openProfilePageDialog(): void {
