@@ -25,3 +25,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+This project is another verison of the React myFLix application, however, this one uses the Angluar framework and is written in Typescript. The functionality remains the same in that users are able to create account, and view movies as well as their genres and director through dialogs using Material Design. A user is also able to update their information and add movies to their list of favorites.

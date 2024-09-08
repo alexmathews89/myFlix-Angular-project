@@ -8,6 +8,12 @@ import { window } from 'rxjs';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 
+/**
+ * This is the main view component which genreates the movie cards and defines the
+ * functions to add and remove a movie from the user's list of favorites as well
+ * as opening the dialogs for a user's profile and a movies genres and directors
+ */
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',

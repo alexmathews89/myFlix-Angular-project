@@ -8,6 +8,11 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs';
 
+/**
+ * this is where the api URL is defined and all of the are called and methods are
+ * executed
+ */
+
 const apiUrl = 'https://myflixapp-495f4f3fbc03.herokuapp.com/';
 
 @Injectable({

@@ -3,6 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+/**
+ * This component opens the genre dialog which displays the the movies genre
+ * along with a discription of the genre
+ */
+
 @Component({
   selector: 'app-genre-card',
   templateUrl: './genre-card.component.html',
